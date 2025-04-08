@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kinevetavegen"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
+        Title="'Ki nevet a végén?' by Gyalog Patrik" Height="800" Width="800">
     <Grid Name="gameGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"></ColumnDefinition>
@@ -45,7 +45,7 @@
         </Grid.RowDefinitions>
         <Border Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="15" BorderBrush="Black" BorderThickness="0,2,0,0"/>
         <Button Content="Dobok!" Grid.Column="12" Grid.Row="15" Grid.ColumnSpan="2"/>
-        <Button Content="Új bábú kihozása!" Grid.Column="3" Grid.Row="15" Grid.ColumnSpan="2"/>
+        <Button Content="Új bábút  hozok ki!" Grid.Column="3" Grid.Row="15" Grid.ColumnSpan="2"/>
         <Polygon Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Points="0,0 10,7, 0,12" Stroke="Black" Fill="Red" />
         <Polygon Grid.Column="8" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Points="0,0 5,10, 10,0" Stroke="Black" Fill="Blue" />
         <Polygon Grid.Column="12" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Center" Points="8,0 0,5, 8,10" Stroke="Black" Fill="Green" />

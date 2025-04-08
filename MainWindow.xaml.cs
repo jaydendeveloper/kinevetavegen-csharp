@@ -27,6 +27,7 @@ namespace kinevetavegen
             generateTiles();
             generateHutWays();
             generateHuts();
+            renderPieces();
         }
 
         public struct Tile
@@ -559,6 +560,162 @@ namespace kinevetavegen
             }},
 
         };
+
+        public struct Piece
+        {
+            public string team;
+            public int number;
+            public int tileId;
+            public bool inHut;
+        }
+
+        Dictionary<string, Piece[]> pieces = new Dictionary<string, Piece[]>()
+{
+    { "red", new Piece[4] {
+        new Piece {
+            team = "red",
+            number = 1,
+            tileId = 5,
+            inHut = true
+        },
+        new Piece {
+            team = "red",
+            number = 2,
+            tileId = 6,
+            inHut = true
+        },
+        new Piece {
+            team = "red",
+            number = 3,
+            tileId = 7,
+            inHut = true
+        },
+        new Piece {
+            team = "red",
+            number = 4,
+            tileId = 8,
+            inHut = true
+        }
+    }},
+    { "blue", new Piece[4] {
+        new Piece {
+            team = "blue",
+            number = 1,
+            tileId = 9,
+            inHut = true
+        },
+        new Piece {
+            team = "blue",
+            number = 2,
+            tileId = 10,
+            inHut = true
+        },
+        new Piece {
+            team = "blue",
+            number = 3,
+            tileId = 11,
+            inHut = true
+        },
+        new Piece {
+            team = "blue",
+            number = 4,
+            tileId = 12,
+            inHut = true
+        }
+    }},
+    { "yellow", new Piece[4] {
+        new Piece {
+            team = "yellow",
+            number = 1,
+            tileId = 1,
+            inHut = true
+        },
+        new Piece {
+            team = "yellow",
+            number = 2,
+            tileId = 2,
+            inHut = true
+        },
+        new Piece {
+            team = "yellow",
+            number = 3,
+            tileId = 3,
+            inHut = true
+        },
+        new Piece {
+            team = "yellow",
+            number = 4,
+            tileId = 4,
+            inHut = true
+        }
+    }},
+    { "green", new Piece[4] {
+        new Piece {
+            team = "green",
+            number = 1,
+            tileId = 13,
+            inHut = true
+        },
+        new Piece {
+            team = "green",
+            number = 2,
+            tileId = 14,
+            inHut = true
+        },
+        new Piece {
+            team = "green",
+            number = 3,
+            tileId = 15,
+            inHut = true
+        },
+        new Piece {
+            team = "green",
+            number = 4,
+            tileId = 16,
+            inHut = true
+        }
+    }}
+};
+        void renderPieces()
+        {
+            foreach (Piece[] teamPieces in pieces.Values)
+            {
+                foreach (Piece piece in teamPieces)
+                {
+                    bool inHut = piece.inHut;
+                    Tile currentTile = inHut ? hutMap[piece.tileId] : gameMap[piece.tileId];
+                    Rectangle pieceRectangle = new Rectangle();
+                    pieceRectangle.Stroke = Brushes.Black;
+                    pieceRectangle.Width = 30;
+                    pieceRectangle.Height = 30;
+                    pieceRectangle.RadiusX = 30;
+                    pieceRectangle.RadiusY = 30;
+
+                    switch (piece.team)
+                    {
+                        case "red":
+                            pieceRectangle.Fill = Brushes.Red;
+                            break;
+                        case "blue":
+                            pieceRectangle.Fill = Brushes.Blue;
+                            break;
+                        case "yellow":
+                            pieceRectangle.Fill = Brushes.Yellow;
+                            break;
+                        case "green":
+                            pieceRectangle.Fill = Brushes.Green;
+                            break;
+                        default:
+                            pieceRectangle.Fill = Brushes.White;
+                            break;
+                    }
+
+                    Grid.SetRow(pieceRectangle, currentTile.row);
+                    Grid.SetColumn(pieceRectangle, currentTile.column);
+                    gameGrid.Children.Add(pieceRectangle);
+                }
+            }
+        }
 
         void generateHuts()
         {
