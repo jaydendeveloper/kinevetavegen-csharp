@@ -1,0 +1,15 @@
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\bin\Debug\kinevetavegen.exe.config
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\bin\Debug\kinevetavegen.exe
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\bin\Debug\kinevetavegen.pdb
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\obj\Debug\kinevetavegen.csproj.AssemblyReference.cache
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\obj\Debug\MainWindow.g.cs
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\obj\Debug\App.g.cs
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\obj\Debug\kinevetavegen_MarkupCompile.cache
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\obj\Debug\kinevetavegen_MarkupCompile.lref
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\obj\Debug\MainWindow.baml
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\obj\Debug\kinevetavegen.g.resources
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\obj\Debug\kinevetavegen.Properties.Resources.resources
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\obj\Debug\kinevetavegen.csproj.GenerateResource.cache
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\obj\Debug\kinevetavegen.csproj.CoreCompileInputs.cache
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\obj\Debug\kinevetavegen.exe
+J:\12c\c#\[kinevetavegen]\kinevetavegen\kinevetavegen\obj\Debug\kinevetavegen.pdb
