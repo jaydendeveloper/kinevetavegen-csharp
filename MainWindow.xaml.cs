@@ -33,7 +33,7 @@ namespace kinevetavegen
 
 
         public Piece selectedPiece = new Piece();
-        public string currentTeam = "yellow";
+        public string currentTeam = "red";
 
         void renderPieces()
         {
@@ -44,12 +44,15 @@ namespace kinevetavegen
                     bool inHut = piece.inHut;
 
                     Tile currentTile = inHut ? hutMap[piece.tileId] : gameMap[piece.tileId];
-                    Rectangle pieceRectangle = new Rectangle();
-                    pieceRectangle.Stroke = Brushes.Black;
-                    pieceRectangle.Width = 30;
-                    pieceRectangle.Height = 30;
-                    pieceRectangle.RadiusX = 30;
-                    pieceRectangle.RadiusY = 30;
+                    Rectangle pieceRectangle = new Rectangle
+                    {
+                        Stroke = Brushes.Black,
+                        Width = 30,
+                        Height = 30,
+                        RadiusX = 30,
+                        RadiusY = 30
+                    };
+
 
                     switch (piece.team)
                     {
@@ -116,18 +119,38 @@ namespace kinevetavegen
             }
         }
 
+        int throwDice()
+        {
+            Random dice = new Random();
+
+            int diceThrow = dice.Next(1,7);
+             
+            return diceThrow;
+        }
+
+        void movePiece(Piece piece, Tile tile)
+        {
+
+            MessageBox.Show("Moving piece to tile: " + tile.number.ToString() + " from tile: " + piece.tileId.ToString() + " at (" + tile.row + " " + tile.column + ")");
+            
+            piece.tileId = tile.number;
+
+            renderPieces();
+        }
+
         void generateHutWays()
         {
             foreach (Tile hutWay in hutWayMap.Values){
-                Rectangle tile = new Rectangle();
-                tile.Stroke = Brushes.Black;
-                tile.Width = 50;
-                tile.Height = 50;
+                Rectangle tile = new Rectangle
+                {
+                    Stroke = Brushes.Black,
+                    Width = 50,
+                    Height = 50,
+                    RadiusX = 50,
+                    RadiusY = 50
+                };
 
-                tile.RadiusX = 50;
-                tile.RadiusY = 50;
-
-               switch (hutWay.teamSpawn)
+                switch (hutWay.teamSpawn)
                {
                     case "red":
                         tile.Fill = Brushes.Red;
@@ -199,6 +222,45 @@ namespace kinevetavegen
                 Grid.SetColumn(tile, gameTile.column);
                 gameGrid.Children.Add(tile);
             }
+        }
+
+        void addNewPieceFromHut()
+        {
+            Tile teamSpawn = gameMap.Values.ToList().Find(tile => tile.type == "spawn" && tile.teamSpawn == currentTeam);
+            Piece newPiece = pieces["red"].ToList().First(piece => piece.inHut == true);
+            bool isOccupied = isOccupiedByAnyPiece(teamSpawn.number);
+            if (isOccupied)
+            {
+                MessageBox.Show("Tile is occupied");
+                return;
+            }
+            newPiece.inHut = false;
+            movePiece(newPiece, teamSpawn);
+        }
+
+        bool isOccupiedByAnyPiece(int tileId)
+        {
+            foreach (Piece[] teamPieces in pieces.Values)
+            {
+                foreach (Piece piece in teamPieces)
+                {
+                    if(!piece.inHut && piece.tileId == tileId)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private void Dice_Click(object sender, RoutedEventArgs e)
+        {
+            throwLabel.Content = throwDice();
+        }
+
+        private void addNewPiece_Click(object sender, RoutedEventArgs e)
+        {
+            addNewPieceFromHut();
         }
     }
 }
